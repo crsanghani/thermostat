@@ -35,4 +35,9 @@ describe('Thermostat', function(){
     expect( function(){ thermostat.downButton(); } ).toThrow(new Error("Thermostat at minimum"));
   });
 
+  // If power saving mode is on, the maximum temperature is 25 degrees
+
+  it('has power saving mode', function() {
+    expect( thermostat.isPowerSavingModeOn()).toBe(true);
+  });
 });
