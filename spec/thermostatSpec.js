@@ -27,4 +27,12 @@ describe('Thermostat', function(){
     thermostat.downButton();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
   });
+
+  // The minimum temperature is 10 degrees
+
+  it('has a minimum temperature of 10 degrees', function(){
+    thermostat.temperature = 10;
+    expect( function(){ thermostat.downButton(); } ).toThrow(new Error("Thermostat at minimum"));
+  });
+
 });
