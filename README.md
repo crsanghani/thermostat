@@ -1,2 +1,2 @@
 # thermostat
-Javascript thermostat
+Javascript thermostat for makers
