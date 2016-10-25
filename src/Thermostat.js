@@ -2,7 +2,9 @@
 
 function Thermostat() {
   this.MINIMUM_TEMPERATURE = 10;
-  this.MAXIMUM_TEMPERATURE = 25;
+  this.MAXIMUM_TEMPERATURE_POWER_SAVE = 25;
+  this.MAXIMUM_TEMPERATURE_NO_POWER_SAVE = 32;
+  this.maximumTemperature = this.MAXIMUM_TEMPERATURE_POWER_SAVE;
   this.temperature = 20;
   this.powerSavingMode = true;
 }
@@ -32,11 +34,16 @@ Thermostat.prototype._isMinimumTemperature = function () {
 };
 
 Thermostat.prototype._isMaximumTemperature = function () {
-  return this.temperature === this.MAXIMUM_TEMPERATURE;
+  return this.temperature === this.maximumTemperature;
 };
 
 Thermostat.prototype.togglePowerSavingMode = function() {
   this.powerSavingMode = !this.powerSavingMode;
-}
+  if(this.powerSavingMode === false) {
+    this.maximumTemperature = this.MAXIMUM_TEMPERATURE_NO_POWER_SAVE;
+  } else {
+    this.maximumTemperature = this.MAXIMUM_TEMPERATURE_POWER_SAVE;
+  };
+};
 
 module.exports = Thermostat;
