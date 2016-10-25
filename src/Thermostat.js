@@ -8,6 +8,8 @@ Thermostat.prototype.getCurrentTemperature = function() {
   return this.temperature;
 };
 
-
+Thermostat.prototype.upButton = function () {
+  this.temperature += 1;
+};
 
 module.exports = Thermostat;
