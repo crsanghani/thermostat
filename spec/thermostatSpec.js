@@ -35,14 +35,33 @@ describe('Thermostat', function(){
     expect( function(){ thermostat.downButton(); } ).toThrow(new Error("Thermostat at minimum"));
   });
 
-  // If power saving mode is on, the maximum temperature is 25 degrees
+
+  // Power saving mode is on by default
 
   it('has power saving mode', function() {
     expect( thermostat.powerSavingMode).toBe(true);
   });
 
-  it('has a maximum temperature of 25', function() {
+  // If power saving mode is on, the maximum temperature is 25 degrees
+
+  it('has a maximum temperature of 25 degrees if power saving mode is on', function() {
     thermostat.temperature = 25;
+    expect( thermostat.powerSavingMode).toBe(true);
     expect( function(){ thermostat.upButton(); } ).toThrow(new Error("Thermostat at maximum"));
+  });
+
+  // Can turn power saving mode off
+
+  it('has power saving mode', function() {
+    thermostat.togglePowerSavingMode();
+    expect( thermostat.powerSavingMode).toBe(false);
+  });
+
+  // If power saving mode is off, the maximum temperature is 32 degrees
+  it('if power saving mode is off max temperature is 32 degress', function() {
+    thermostat.temperature = 32;
+    thermostat.togglePowerSavingMode();
+    expect(thermostat.powerSavingMode).toBe(false);
+    expect(this.maximumTemperature).toEqual(32);
   });
 });
