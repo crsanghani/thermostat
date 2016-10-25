@@ -40,4 +40,9 @@ describe('Thermostat', function(){
   it('has power saving mode', function() {
     expect( thermostat.isPowerSavingModeOn()).toBe(true);
   });
+
+  it('has a maximum temperature of 25', function() {
+    thermostat.temperature = 25;
+    expect( function(){ thermostat.upButton(); } ).toThrow(new Error("Thermostat at maximum"));
+  });
 });
