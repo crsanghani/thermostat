@@ -1,0 +1,16 @@
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: blue;
+
+}
+
+.high-usage {
+  color: red;
+}
+
+[class$="usage"]{
+  text-align: center;
+}

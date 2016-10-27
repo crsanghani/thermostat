@@ -20,7 +20,6 @@ Thermostat.prototype.energyUsage = function() {
     return 'medium-usage';
   }
     return 'high-usage';
-
 }
 
 Thermostat.prototype.getCurrentTemperature = function() {
